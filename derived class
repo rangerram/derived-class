@@ -1,0 +1,28 @@
+ class someclass
+    {
+        public string filed1 = "base class filed";
+        public void method1(string value)
+        {
+            Console.WriteLine("base class --method1:{0}", value);
+        }
+    }
+    class otherclass:someclass
+    {
+    //  new  public string filed1 = "derived class filed";   //屏蔽基类的类成员
+      public string filed2 = "derived class filed";
+      public void method2(string value)
+        {
+            Console.WriteLine("derived class --method2:{0}", value);
+        }
+    }
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            otherclass oc = new otherclass();
+             oc.method1(oc.filed1);       //以基类字段为参数的基类方法
+             oc.method1(oc.filed2);       //以派生字段为参数的基类方法
+             oc.method2(oc.filed1);       //以基类字段为参数的派生方法
+             oc.method2(oc.filed2);       //以派生字段为参数的派生方法
+        }
+    }
